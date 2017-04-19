@@ -1,0 +1,78 @@
+<md-content flex layout layout-align="center stretch" style="min-height: 95%">
+	<md-content class="map" flex="75" layout="column" layout-align="center stretch">
+		<high-maps back-one-level="BackOneLevel" mapdata="map_data" change-map-state="ChangeMapState" flex ng-if="dataHasLoaded"></high-maps>
+		<div flex="10" layout layout-align="center center">
+			<md-button class="md-raised" ng-click="BackOneLevel()">View Full Map</md-button>
+		</div>
+	</md-content>
+
+	<md-content class="panel" flex layout="column" layout-margin layout-padding layout-align="center stretch" ng-cloak>
+		<md-tabs md-selected="panels.selected" md-no-border-bottom md-center-tabs="true" flex layout-align="start stretch">
+			<md-tab label="Tech Stack">
+				<div class="span-height" flex layout="column" layout-align="center stretch">
+					<md-content class="scrollbar-macosx" data-jquery-scrollbar flex="95" layout="column" layout-align="start stretch">
+						<div ng-repeat="item in infrastructure">
+							<md-divider></md-divider>
+							<div class="panel-content infra" ng-click="showInfraChildren($index)" flex layout layout-align="start stretch">
+								<span flex layout layout-align="start center">
+									<i ng-class="{'fa fa-caret-down' : !infraChildrenShowFlag[$index], 'fa fa-caret-up' : infraChildrenShowFlag[$index]}" aria-hidden="true"></i>
+									{{item.parent}}
+								</span>
+								<span class="status {{item.parentColor}}" flex="25" layout layout-align="center center">
+									{{item.parentStatus}}
+								</span>
+							</div>
+							<md-divider></md-divider>
+							<div ng-show="infraChildrenShowFlag[$index]">
+								<div class="panel-subcontent" ng-repeat="i in item.children" flex layout layout-align="center center">
+									<span flex="75">{{i.name}}</span>
+									<span class="status {{i.statusColor}} circle"></span>
+								</div>
+							</div>
+						</div>
+					</md-content>
+					<md-divider></md-divider>
+					<md-content class="panel-legend" flex="5" layout layout-align="center center">
+						<div ng-repeat="item in infraStatus" flex layout="row" layout-align="center stretch">
+							<span class="status {{item.statusColor}} circle" layout layout-align="center center"></span>
+							<span flex layout layout-align="center center">{{item.status}}</span>
+						</div>
+					</md-content>
+				</div>
+			</md-tab>
+			<md-tab label="Applications">
+				<md-content class="scrollbar-macosx span-height" data-jquery-scrollbar flex layout="column" layout-align="start stretch">
+					<div class="panel-content apps" flex="5" layout layout-align="start stretch">
+						<span flex="25" layout layout-align="center center"></span>
+						<span flex layout layout-align="center center">BRAZIL</span>
+						<span flex layout layout-align="center center">FRANCE</span>
+					</div>
+					<div ng-repeat="item in applications">
+						<md-divider></md-divider>
+						<div class="panel-content apps" flex layout layout-align="start stretch">
+							<span class="links" ng-click="showPopUp(item.parent)" flex="25" layout layout-align="center center">{{item.parent}}</span>
+							<span class="status {{item.brazil.statusColor}}" flex layout layout-align="center center">
+								{{item.brazil.status}}
+							</span>
+							<span class="status {{item.france.statusColor}}" flex layout layout-align="center center">
+								{{item.france.status}}
+							</span>
+						</div>
+						<md-divider></md-divider>
+					</div>
+				</md-content>
+			</md-tab>
+		</md-tabs>
+	</md-content>
+</md-content>
+
+<div id="transform" layout="column" layout-align="center center">
+	<a style="letter-spacing: 2px;text-align: end;text-decoration: none;color: whitesmoke" layout="row" layout-align="end center" href="" ng-click="closePopup()">close</a>
+	<p style="letter-spacing: 2px;text-align: center">LATENCY CHART</p>
+	<div id="spinner" ng-if="!dataLoaded" style="letter-spacing: 2px;text-align: center;vertical-align: center; margin-top: 18%;">
+		<md-progress-circular md-diameter="35"></md-progress-circular>
+	</div>
+
+	<!-- <latency-chart value="latencyvalue" ng-if="dataLoaded" style="height:33%;width: 35%"></latency-chart> -->
+	<latency-chart flex  value="latencyvalue" ng-if="dataLoaded" style="height:33%;width: 35%"></latency-chart>
+</div>

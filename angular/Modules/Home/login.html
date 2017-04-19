@@ -1,0 +1,12 @@
+<md-dialog  layout="row" layout-align="center" layout-padding>
+<br>
+  <md-input-container  style="width:100%;    margin-bottom: -4%;">
+      <label>Enter passscode</label>
+      <input type="password" ng-model="passcode" ng-change="login(passcode)">
+      <div ng-show="taken">
+        <div ng-message="wrong">This shop username is taken</div>
+      </div>
+    </md-input-container>
+
+
+</md-dialog>

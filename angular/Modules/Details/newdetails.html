@@ -1,0 +1,35 @@
+<md-content flex layout="column" layout-align="start stretch" ng-cloak style="min-height: 95%" ng-cloak>
+	<div class="sub-header" ng-click="ChangeState('home')" flex="5" flex layout layout-align="center stretch">
+		<md-button class="md-icon-button" aria-label="Back">
+			<md-icon md-svg-icon="assets/icons/back.svg"></md-icon>
+		</md-button>
+		<span flex layout layout-align="start center">
+			<span class="orange-text"><strong>DASHBOARD&nbsp</strong></span>/ DETAILS
+		</span>
+	</div>
+	<md-content flex layout layout-align="start stretch">
+		<md-content class="panel" ng-repeat-start="phase in phases" flex layout="column" layout-margin layout-padding layout-align="center stretch">
+			<span class="da-title" layout layout-align="center center">{{phase}} SEASON</span>
+			<md-content class="scrollbar-macosx" data-jquery-scrollbar flex="95" layout="column" layout-align="start stretch">
+				<div ng-repeat="item in processes[phase]"  ng-click="goToLatency()">
+					<div class="panel-content da-details" flex layout layout-align="start stretch">
+						<span flex layout layout-align="start center">
+							<!-- <i ng-class="{'fa fa-caret-down' : !{{phase}}[$index], 'fa fa-caret-up' : {{phase}}[$index]}" aria-hidden="true"></i> -->
+							{{item.name}}
+						</span>
+						<!-- <span class="status gray" flex="20" layout layout-align="center center">NO DATA</span> -->
+					</div>
+					<md-divider></md-divider>
+					<!-- <div ng-show="{{phase}}[$index]"> -->
+						<div class="panel-subcontent" ng-repeat="i in item.process" flex layout layout-align="center center">
+							<span flex="75">{{i.name}}</span>
+							<span class="status gray circle"></span>
+						</div>
+					<!-- </div> -->
+					<md-divider></md-divider>
+				</div>
+			</md-content>
+		</md-content>
+		<md-divider ng-repeat-end></md-divider>
+	</md-content>
+</md-content>

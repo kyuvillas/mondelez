@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SYNGENTA</title>
+
+    <!-- FAVICON -->
+    <!-- <link rel="apple-touch-icon" sizes="57x57" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon.svg">
+    <link rel="icon" type="image/png" href="assets/images/icon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/icon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon.svg">
+    <link rel="manifest" href="assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/images/icon.svg">
+    <meta name="theme-color" content="#ffffff"> -->
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="assets/css/map.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <!-- Animations -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+
+    <!-- GLYPHICONS -->
+    <link rel="stylesheet" href="assets/css/glyphicon.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <!-- Jquery -->
+    <script src="assets/plugins/Jquery/jquery-2.2.1.js"></script>
+    <script src="assets/plugins/Jquery/jquery.min.js"></script>
+    <script src="assets/plugins/Jquery/jquery-ui.js"></script>
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="assets/plugins/AngularMaterial/material.css">
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="assets/plugins/Angular/angular.min.js"></script>
+    <script src="assets/plugins/Angular/angular-animate.min.js"></script>
+    <script src="assets/plugins/Angular/angular-aria.min.js"></script>
+    <script src="assets/plugins/Angular/angular-messages.min.js"></script>
+    <script src="assets/plugins/Angular/uirouter.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="assets/plugins/AngularMaterial/angular-material.min.js"></script>
+
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="assets/plugins/ColorPicker/md-color-picker.css">
+    <script type="text/javascript" src="assets/plugins/ColorPicker/tinycolor.js"></script>
+    <script type="text/javascript" src="assets/plugins/ColorPicker/md-color-picker.js"></script>
+
+    <!-- Scrollbar -->
+    <link rel="stylesheet" href="assets/plugins/Scrollbar/jquery.scrollbar.css">
+    <script src="assets/plugins/Scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Highcharts JS -->
+    <script src="assets/plugins/Highchart/highcharts.js"></script>
+    <script src="assets/plugins/Highchart/map.js"></script>
+    <!-- <script src="assets/plugins/Highchart/data1.js"></script> -->
+    <script src="assets/plugins/Highchart/latlong.js"></script>
+    <!-- <script src="assets/plugins/Highchart/data.js"></script> -->
+    <script src="assets/plugins/Highchart/world.js"></script>
+
+    <!-- LOADASH -->
+    <script src="assets/plugins/Lodash/loadash.js"></script>
+
+    <!-- NgDrag -->
+    <script src="assets/plugins/ng-draggable/ngdrag.js"></script>   
+
+
+    <!--AUTH -->
+    <script src="angular/Auth/auth.js"></script>
+    
+    <!-- --------------------------------------- Shared Modules --------------------------------------- -->
+    <!-- Content Manager / Configs and Providers -->
+    <script type="text/javascript" src="angular/Shared/hudContentManager.js"></script>
+    <!-- Directives -->
+    <script type="text/javascript" src="angular/Shared/hudDirectives.js"></script>
+    <!-- Factories -->
+    <script type="text/javascript" src="angular/Shared/hudFactory.js"></script>
+    <!-- Router -->
+    <script type="text/javascript" src="angular/Shared/hudRouter.js"></script>
+    <!-- Main Application -->
+    <script type="text/javascript" src="angular/main.js"></script>
+    <!-- --------------------------------------- Shared Modules --------------------------------------- -->
+
+    <!-- Home Controller -->
+    <script type="text/javascript" src="angular/Modules/Home/homeController.js"></script>
+	<!-- Home Controller -->
+    <script type="text/javascript" src="angular/Modules/Latency/latencyController.js"></script>
+    <script type="text/javascript" src="angular/Modules/Details/detailsController.js"></script>
+</head>
+<body class="scrollbar-macosx" data-jquery-scrollbar ng-app="MainApplication" ng-cloak>
+    <!-- CSS Templates -->
+    <hud-main-styles></hud-main-styles>
+    <!-- End of CSS Templates -->
+
+    <div class="grid-layer"></div>
+    <div ng-controller="MainController">
+        <md-content class="scrollbar-macosx span-height" data-jquery-scrollbar layout="column" layout-align="start stretch">
+            <md-toolbar flex="5" class="header md-menu-toolbar" layout layout-align="start center">
+                <img class="header-logo" src="assets/images/mondelez-logo.png" layout layout-align="start center">
+                <div class="header-tab-title" layout layout-align="start center">monitoring reports</div>
+                <div class="header-tab-time" flex layout layout-align="end center">
+                    {{date | date:'EEEE - dd MMM yyyy - h:mm a'}}
+                </div>
+            </md-toolbar>
+            <div ui-view flex ng-cloak></div>
+        </md-content>
+    </div>
+</body>
+</html>

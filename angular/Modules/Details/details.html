@@ -1,0 +1,46 @@
+<md-content flex layout="column" layout-align="start stretch" ng-cloak style="min-height: 95%" ng-cloak>
+    <div class="sub-header" ng-click="ChangeState('home')" flex="5" flex layout layout-align="center stretch">
+        <md-button class="md-icon-button" aria-label="Back">
+            <md-icon md-svg-icon="assets/icons/back.svg"></md-icon>
+        </md-button>
+        <span flex layout layout-align="start center">
+            <span class="orange-text"><strong>DASHBOARD&nbsp</strong></span>/ DETAILS
+        </span>
+    </div>
+
+    <md-content class="da" flex layout="column" layout-align="start stretch">
+        <md-content flex="10" layout layout-align="center stretch">
+            <span flex="15"></span>
+            <div ng-repeat="phase in phases" flex layout layout-align="center stretch">
+                <span class="season" flex layout layout-align="center center">
+                    {{phase}} SEASON
+                </span>
+            </div>
+        </md-content>
+
+        <md-divider></md-divider>
+        
+        <md-content ng-repeat-start="system in systems" layout layout-align="center stretch">
+            <span flex="15" layout layout-padding layout-align="start center">
+                <img src="assets/images/logo_{{system}}.png"/>{{system}}
+            </span>
+        
+            <md-divider></md-divider>
+        
+            <div ng-repeat-start="phase in phases" class="processes" flex layout layoUt-align="center center">
+                <span ng-repeat="item in processes[phase]">
+                    <span ng-show="item.name == system">
+                        <center>
+                            <span ng-repeat="i in item.process">
+                                <button ng-click="goToLatency()">{{i.name}}</button>
+                                <span ng-if="$index%2 != 0 && $index < item.process.length-1 || i.name.length > 36"><br/></span>
+                            </span>
+                        </center>
+                    </span>
+                </span>
+            </div>
+            <md-divider ng-repeat-end></md-divider>
+        </md-content>
+        <md-divider ng-repeat-end></md-divider>
+    </md-content>
+</md-content>

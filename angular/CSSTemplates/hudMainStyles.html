@@ -1,0 +1,594 @@
+<style>
+    /* TESTERS */
+    .test-g {
+        background-color: #01a982;
+        border: 1px solid white;
+    }
+    .test-b {
+        background-color: #425563;
+        border: 1px solid white;
+    }
+    .test-r {
+        background-color: #f04953;
+        border: 1px solid white;
+    }
+    .test-y {
+        background-color: #ffd144;
+        border: 1px solid white;
+    }
+    .test-v {
+        background-color: #614767;
+        border: 1px solid white;
+    }
+
+    @font-face {
+        font-family: Roboto, sans-serif;
+        /*src: url("assets/font/roboto/Roboto-Regular.eot") format("opentype");*/
+    }
+
+    body {
+        color: whitesmoke;
+        font-family: 'Roboto', sans-serif;
+
+        background: #293842;
+        background: -moz-radial-gradient(center, ellipse cover, #293842 0%, rgba(7,18,18,1) 100%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #293842), color-stop(100%, rgba(7,18,18,1)));
+        background: -webkit-radial-gradient(center, ellipse cover, #293842 0%, rgba(7,18,18,1) 100%);
+        background: -o-radial-gradient(center, ellipse cover, #293842 0%, rgba(7,18,18,1) 100%);
+        background: -ms-radial-gradient(center, ellipse cover, #293842 0%, rgba(7,18,18,1) 100%);
+        background: radial-gradient(ellipse at center, #293842 0%, rgba(7,18,18,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e3e4a', endColorstr='#071212', GradientType=1 );
+
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Chrome/Safari/Opera */
+        -khtml-user-select: none;
+        /* Konqueror */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+    }
+
+    *:focus: {
+        outline: none;
+    }
+    button, button:focus {
+        outline: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        padding: 0;
+    }
+
+    md-content {
+        background-color: inherit;
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    md-content.md-default-theme, md-content {
+        color: rgba(255,255,255,0.8) !important;
+    }
+
+    .small-text {
+        font-size: small;
+    }
+    .x-small-text {
+        font-size: x-small;
+        opacity: 0.8;
+    }
+    .xx-large-text {
+        font-size: xx-large;
+    }
+    
+    .hide-overflow {
+        overflow: hidden;
+    }
+
+    .links {
+        cursor: pointer;
+    }
+    .links:hover {
+        color: #aab400;
+    }
+
+    .status {
+        border-radius: 5px;
+        font-weight: bold;
+        padding: 1.5%;
+    }
+    .gray {
+        background-color: gray;
+        color: black;
+    }
+    .green {
+        background-color: #39b54a;
+        color: whitesmoke;
+    }
+    .red {
+        background-color: #ed1c24;
+        color: whitesmoke;
+    }
+    .yellow {
+        background-color: #ffd800;
+        color: black;
+    }
+    .failed {
+        background-color: #161616;
+        /*dbdbdb*/
+        color: red;
+    }
+
+    .orange-text {
+        color: #EB8200;
+    }
+
+    .circle {
+        border-radius: 10px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .span-width {
+        width: 100% !important;
+    }
+    .span-height {
+        height: 100% !important;
+    }
+
+    .grid-layer {
+        background: url(assets/images/grid.png) repeat center center fixed;
+        opacity: .08;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+
+        height: 100%;
+        width: 100%;
+        z-index: 0 !important;
+    }
+
+    .header {
+        background-color: rgba(7,18,18,.5) !important;
+        border-bottom: 3px solid #5f7800;
+        min-height: 0;
+        padding: .65% .65% .65% .75%;
+    }
+    .header-logo {
+        padding-right: 1%;
+        width: 6%;
+    }
+    .header-tab-title {
+        color: #aab400;
+        font-size: .8em;
+        font-weight: bold;
+    }
+    .header-tab-time {
+        color: #0087a0;
+        font-size: .6em;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .sub-header {
+        background-color: #27373f;
+        cursor: pointer;
+        font-size: small;
+        margin: 0;
+        overflow: hidden !important;
+    }
+
+    /* HOME PAGE */
+    .map .md-button {
+        background-color: rgba(7,18,18,.3) !important;
+        border: 1px solid #046172 !important;
+        color: #046172 !important;
+        font-family: inherit;
+        font-size: .8em;
+    }
+    .map .md-button:hover {
+        background-color: #046172 !important;
+        border: 1px solid #046172 !important;
+        color: whitesmoke !important;
+    }
+
+    .panel {
+        background-color: rgba(7,18,18,.3) !important;
+        border: 1px solid rgba(70, 81, 82, 1);
+        overflow: auto;
+    }
+    .panel .md-tab {
+        border: 1px solid #046172;
+        color: #046172;
+        font-size: .8em;
+        line-height: 12px;
+        padding: 8px 11px;
+    }
+    .panel .md-tab.md-active {
+        background-color: #046172;
+        color: whitesmoke !important;
+    }
+    .panel md-tabs.md-default-theme .md-tab .md-ripple-container,
+    .panel md-tabs.md-tab .md-ripple-container {
+        color: whitesmoke;
+    }
+    .panel md-tabs.md-default-theme md-ink-bar, .panel md-tabs md-ink-bar {
+        background: none;
+        color: whitesmoke;
+    }
+    .panel-content {
+        font-size: .8em;
+        outline: none;
+        padding: 1.5%;
+    }
+    .infra:hover, .infra:hover i; {
+        background-color: #046172;
+        color: white;
+        cursor: pointer;
+    }
+    .infra i, .da-details i {
+        color: #046172;
+        margin-right: 2%;
+    }
+    .panel-subcontent {
+        font-size: .8em;
+        padding: .5%;
+    }
+    .panel-legend {
+        border: 1px solid #046172;
+        font-size: .7em;
+        padding: 0 2%;
+    }
+    .apps span {
+        margin: 0 3%;
+    }
+
+    .da img {
+        height: auto;
+        max-width: 90px;
+    }
+    .da .season {
+        font-size: 1.5em;
+        width: 100%;
+        background-color: rgba(4, 97, 114, 0.5);
+        color: whitesmoke !important;
+        -webkit-clip-path: polygon(92% 0, 100% 50%, 91% 100%, 0% 100%, 7% 52%, 0% 0%);
+        clip-path: polygon(92% 0, 100% 50%, 91% 100%, 0% 100%, 7% 52%, 0% 0%);
+    }
+    .da .processes {
+        padding: 1%;
+    }
+    .da .processes button {
+        background-color: rgba(7,18,18,.3) !important;
+        border: 1px solid #046172 !important;
+        border-radius: 5px;
+
+        color: white !important;
+        cursor: pointer;
+        margin: .7% 0;
+        padding: 6px;
+
+        font-family: inherit;
+        font-size: .9em;
+    }
+    .da .processes button:hover {
+        background-color: #046172 !important;
+        border: 1px solid #046172 !important;
+        color: whitesmoke !important;
+    }
+
+    
+    .la-header {
+        font-size: 2.5em;
+        font-family: 'Roboto', sans-serif;
+    }
+    .la-header i {
+        margin-right: 1%;
+    }
+    .la-header-stats div {
+        font-size: large;
+        padding: 2%;
+    }
+    .la-container {
+        background-color: #19262b;
+    }
+    .la-container .md-button {
+        margin: 0;
+        padding: 0 5%;
+    }
+
+
+
+    .latency-graph-container {
+        background-color: #19262b; height:60%;width:100%;
+    }
+    .sub-nav-toolbar {
+        background-color: #27373f;
+        margin:0;
+        overflow:hidden;
+    }
+    .sub-nav-toolbar>div {
+        height: 5%;
+    }
+    .green-text {
+        color: #39b54a;
+    }
+    .average-latency {
+        background-color: rgba(39,55,63,0.5);
+        border: 1px solid #27373f;
+    }
+    .color-1 {
+        color: #D4BF7B;
+    }
+    .color-2 {
+        color: #00A0BE;
+    }
+    .color-3 {
+        color: #00886B;
+    }
+    .color-4 {
+        color: #BCC6CC;
+    }
+    .color-5 {
+        color: #FFD700;
+    }
+    button.latency-toggle:disabled {
+        color: #39b54a !important;
+    }
+
+    /*  KYU'S CSS   */
+    /*kyu css*/
+    .panel-title{
+        color:rgba(0,135,160,0.5);
+        text-align: center; 
+        font-size: 24;
+        letter-spacing: 2px;
+        margin-bottom:10%;
+        margin-top:2%
+    }
+    .link {
+        font-size: 100%;
+        text-decoration: none;
+        color: whitesmoke;
+        letter-spacing: 2px;
+    }
+    .back-button {
+        margin-left: 1%;
+        letter-spacing: 2px;
+    }
+    .green-bg {
+        background-color: #01a982 !important
+    }
+    .container {
+        padding: 8px;
+        width: 98%;
+        height: 70%;
+        margin-top: .5%;
+        overflow: hidden
+    }
+    .mother-container {
+        padding: 0% 1% 1% 1%;
+    }
+    .widget {
+        background-color: transparent;
+        color: whitesmoke;
+        font-size: 11.5px;
+        border: solid 1px whitesmoke;
+        border-radius: 10px;
+        padding: 0px;
+        /*width: 100%;*/
+        /*min-height:44.5px;*/
+        height: 40px;
+        margin: .3%;
+    /*
+    word-wrap: break-word;*/
+    text-overflow: ellipsis;
+}
+
+md-icon {
+    opacity: 0.3;
+}
+div.progress {
+    width: 100%;
+    height: 30px;
+}
+div.progress >span {
+    opacity: 0.5;
+}
+div.progress.mini {
+    height: 50px;
+}
+div.progress.green {
+    background-color: rgba(1, 169, 130, 0.5);
+}
+div.progress.red {
+    background-color: rgba(240, 73, 83, 0.5);
+}
+div.progress.yellow {
+    background-color: rgba(255, 209, 68, 0.5);
+}
+
+/*div.region-dev.overall {
+-webkit-box-shadow: 0px 0px 96px -9px rgba(1,169,130,1);
+-moz-box-shadow: 0px 0px 96px -9px rgba(1,169,130,1);
+box-shadow: 0px 0px 96px -9px rgba(1,169,130,1);
+}*/
+
+.sobr-title {
+    height: 150%;
+    opacity: 0.8;
+    color: whitesmoke;
+    font-size: 150%;
+    letter-spacing: 5px;
+}
+.region-dev {
+    margin: 1%;
+    width: 98%;
+    height: 21%;
+    background-color: rgba(15, 106, 110, 0.2);
+}
+.region-dev.overall {
+    margin: 0% auto auto auto;
+    width: 98%;
+    height: 21.3%;
+    background-color: rgba(15, 106, 110, 0.3);
+}
+.region-dev.overall > span {
+    margin-top: 10px;
+}
+.region-dev > span {
+    letter-spacing: 2px;
+    margin-right: 10px;
+    opacity: 0.5;
+    text-align: right;
+    display: block;
+}
+.region-dev.overall > span {
+    font-size: 150%;
+    letter-spacing: 2px;
+    margin-right: 10px;
+    opacity: 0.5;
+    text-align: center;
+    display: block;
+}
+.region-dev.overall > i {
+    font-size: 800%;
+    opacity: 0.5;
+}
+.region-dev.overall > i.fa-check-square {
+    color: #01a982;
+}
+.region-dev.overall > i.fa-exclamation-triangle {
+    color: #ffd144;
+}
+.region-dev.overall > i.fa-minus-circle {
+    color: #f04953;
+}
+.region-dev > md-divider {
+    margin: 1% 2% 0 2%;
+}
+span.proj-title {
+    opacity: 0.5;
+    color: whitesmoke;
+    font-size: 55%;
+    letter-spacing: 2px;
+}
+span.proj-num {
+    opacity: 0.8;
+    color: whitesmoke;
+    font-size: 120%;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+.main-container {
+    background-color: rgba(15, 106, 110, 0.2);
+}
+.container-title > span {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+generic-highchart {
+    margin: -3% 0;
+    opacity: 0.7;
+}
+.hud-minimalist > tbody > tr:nth-child(even) {
+    background-color: rgba(38, 40, 35, .5);
+}
+.hud-minimalist > tbody > tr:nth-child(odd) {
+    background-color: rgba(38, 40, 35, .2);
+}
+div.status {
+    height: 20px;
+    width: 20px;
+    background-color: #01a982;
+    border-radius: 100%;
+}
+table.hud-minimalist {
+    width: 100%;
+    border-collapse: collapse;
+}
+table.hud-minimalist > tbody > tr > td {
+    color: whitesmoke;
+    opacity: 0.9;
+    /*text-align: left;*/
+    font-size: 16px;
+    padding: 10px 10px 10px 10px;
+    vertical-align: text-top;
+    border-bottom: .1em solid rgba(255, 255, 255, .2);
+}
+table.hud-minimalist > thead > tr {
+    /*border-top: 1px solid rgba(255,255,255,1);*/
+    border-top: 1px solid #262823;
+    border-bottom: 1px solid #262823;
+    letter-spacing: 2px;
+    background: rgba(24, 24, 24, .1);
+    padding: 5px 0 5px 0
+}
+table.hud-minimalist > thead > tr > th {
+    font-size: 90%;
+    letter-spacing: 2px;
+    background-color: #262823;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+table.hud-minimalist > tbody > tr:hover {
+    background-color: rgba(15, 106, 110, 0.5);
+    border-radius: 50px;
+    cursor: default;
+    text-align: left;
+}
+table.hud-minimalist > tbody > tr > td >i {
+    vertical-align: center;
+}
+table.hud-minimalist > tbody > tr > td:first-child {
+    text-align: left;
+}
+
+/*trixia*/
+
+.phase-border {
+    border: 1px solid;
+    border-color: transparent #046172 transparent #046172;
+    padding: 0px 10px;
+}
+.phase {
+    padding: 0px 10px;
+}
+.md-button.md-default-theme.md-raised, .md-button.md-raised{
+    background-color: transparent;
+    color: rgb(250,250,250);
+    border: 1px  rgb(250,250,250) solid;
+}
+.md-button.md-default-theme.md-raised:not([disabled]):hover, .md-button.md-raised:not([disabled]):hover{
+    background-color: #046172;
+    color: rgb(250,250,250);
+    border: 1px  rgb(250,250,250) solid;
+}
+md-dialog.md-default-theme, md-dialog {
+    border-radius: 4px;
+    background-color: whitesmoke;
+    color: black;
+
+}
+md-input-container:not(.md-input-has-value) input:not(:focus) {
+    color: black;
+}
+md-input-container.md-default-theme label, md-input-container label, md-input-container.md-default-theme ._md-placeholder, md-input-container ._md-placeholder {
+    color: rgba(0,0,0,0.5);
+}
+md-input-container.md-default-theme .md-input, md-input-container .md-input {
+    color: rgba(0,0,0,1.0);
+    border-color: rgba(0,0,0,0.12);
+    border-top-color: rgba(0,0,0, 0.117647);
+    border-right-color: rgba(0,0,0, 0.117647);
+    border-bottom-color: rgba(0,0,0, 0.117647);
+    border-left-color: rgba(0,0,0, 0.117647);
+}
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label {
+    color: rgba(0,0,0,0.7);
+}
+</style>

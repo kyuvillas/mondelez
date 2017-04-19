@@ -1,0 +1,26 @@
+[  
+  {  
+    "name":"Brazil",
+    "status":"Down",
+    "health":"50",
+    "lat":-15.79389,
+    "lon":-47.8822,
+    "$$hashKey":"object:24",
+    "type":[
+      "custom/world",
+      "countries/br/br-all"
+    ]
+  },
+  {  
+    "name":"France",
+    "status":"Down",
+    "health":"50",
+    "lat":43.744097,
+    "lon":1.391240,
+    "$$hashKey":"object:24",
+    "type":[
+      "custom/world",
+      "countries/fr/fr-all"
+    ]
+  }
+]

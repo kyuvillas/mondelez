@@ -1,0 +1,86 @@
+<md-content flex layout="column" layout-align="start stretch" ng-cloak style="min-height: 95%" ng-cloak>
+    <div class="sub-header" ng-click="goToLatency()" flex="5" flex layout layout-align="center stretch">
+        <md-button class="md-icon-button" aria-label="Back">
+            <md-icon md-svg-icon="assets/icons/back.svg"></md-icon>
+        </md-button>
+        <span flex layout layout-align="start center">
+            <span class="orange-text"><strong>DASHBOARD&nbsp</strong></span>/ DETAILS
+        </span>
+    </div>
+
+    <md-content class="hide-overflow la-header" flex="10" layout layout-margin layout-align="start center">
+        <div class="" flex="35" layout layout-align="start center">
+            <i class="fa fa-map-marker green-text"></i>
+            <span>{{latency_details.location}}</span>
+        </div>
+        
+        <div class="la-header-stats" flex layout layout-margin layout-align="end stretch">
+            <div flex layout layout-align="center center">
+                <span class="color-1">0&nbsp</span>
+                <span>ALERTS</span>
+            </div>
+            <div flex layout layout-align="center center">
+                <span class="color-1">{{latency_comp.throughput}}&nbsp</span>
+                <span>THROUGHPUT</span>
+            </div>
+            <div flex layout layout-align="center center">
+                <span class="color-1">1 HOUR&nbsp</span>
+                <span>INTERVAL</span>
+            </div>
+        </div>
+    </md-content>
+
+    <md-divider></md-divider>
+
+    <md-content class="hide-overflow" flex layout layout-align="center stretch">
+        <md-content flex="35"></md-content>
+        <md-content class="la-container" flex layout="column" layout-align="start stretch">
+            <div flex="15" layout layout-align="start stretch">
+                <div layout="column" flex class="average-latency" layout-align="center center" layout-margin ng-repeat="values in latency_comp.value">
+                    <span class="xx-large-text" ng-class="{'color-1': values.type=='APP AVAILABILITY', 'color-2': values.type=='BRP AVAILABILITY', 'color-3': values.type=='FEP AVAILABILITY', 'color-4': values.type=='LNP AVAILABILITY', 'color-5': values.type=='PED AVAILABILITY'}" ng-if="selected.lowest">{{values.lowest}} S</span>
+                    <span class="xx-large-text" ng-class="{'color-1': values.type=='APP AVAILABILITY', 'color-2': values.type=='BRP AVAILABILITY', 'color-3': values.type=='FEP AVAILABILITY', 'color-4': values.type=='LNP AVAILABILITY', 'color-5': values.type=='PED AVAILABILITY'}" ng-if="selected.avg">{{values.avg}} S</span>
+                    <span class="xx-large-text" ng-class="{'color-1': values.type=='APP AVAILABILITY', 'color-2': values.type=='BRP AVAILABILITY', 'color-3': values.type=='FEP AVAILABILITY', 'color-4': values.type=='LNP AVAILABILITY', 'color-5': values.type=='PED AVAILABILITY'}" ng-if="selected.highest">{{values.highest}} S</span>
+                    <span class="small-text">{{values.type}}</span>
+                </div>
+                <!--<div layout="column" flex="10" class="average-latency" layout-align="center center" layout-margin>
+                    <span class="xx-large-text color-2"> S</span>
+                    <span class="small-text">BRP AVAILABILITY</span>
+                    </div>
+                    <div layout="column" flex="10" class="average-latency" layout-align="center center" layout-margin>
+                    <span class="xx-large-text color-3"> S</span>
+                    <span class="small-text">FEP AVAILABILITY</span>
+                    </div>
+                    <div layout="column" flex="10" class="average-latency" layout-align="center center" layout-margin>
+                    <span class="xx-large-text color-4"> S</span>
+                    <span class="small-text">LNP AVAILABILITY</span>
+                    </div>
+                    <div layout="column" flex="10" class="average-latency" layout-align="center center" layout-margin>
+                    <span class="xx-large-text color-5"> S</span>
+                    <span class="small-text">PED AVAILABILITY</span>
+                </div>-->
+                <div flex="25" layout="column" layout-padding layout-align="center center">
+                    <md-button class="latency-toggle" ng-disabled="selected.lowest" ng-click="updateToggle(2)">LOWEST LATENCY</md-button>
+                    <md-button class="latency-toggle" ng-disabled="selected.avg" ng-click="updateToggle(1)">AVERAGE LATENCY</md-button>
+                    <md-button class="latency-toggle" ng-disabled="selected.highest" ng-click="updateToggle(3)">HIGHEST LATENCY</md-button>
+                </div>
+            </div>
+            <md-content class="" flex layout="row" layout-align="center stretch">
+                <div class="latency-graph-container" layout-align="center center" layout-margin> 
+                    <div class="sub-nav-toolbar" layout-align="center center">
+                        <div class="" style="height:8%">
+                            <p layout="row" class="small-text" style="margin:2px 0 0 5px">
+                                <span class="orange-text"><strong>Latency Chart</strong></span>
+                            </p>
+                            <p layout="row" class="x-small-text" style="margin:2px 0 0 5px">
+                                <span>Last Updated: 03-20-2017 10:00:00 UTC</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div  style="height:400px" class="container"  layout="column" layout-align="center stretch">
+                        <latency-chart flex  value="latencyvalue" ng-if="dataLoaded"></latency-chart>
+                    </div>
+                </div>
+            </md-content>
+        </md-content>
+    </md-content>
+</md-content>
